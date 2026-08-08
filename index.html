@@ -32,11 +32,9 @@
   <div id="loginScreen" class="fixed inset-0 bank-gradient z-50 flex items-center justify-center p-4">
     <div class="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl max-w-md w-full p-8 space-y-6 border border-slate-100 transform transition-all">
       <div class="text-center space-y-3">
-        <!-- Logo Resmi DAPM (Simbolik SVG / Lingkaran Tangan & Lidah Api) -->
-        <div class="w-16 h-16 bg-red-600 rounded-full mx-auto shadow-xl flex items-center justify-center text-white text-2xl font-black border-4 border-amber-400 relative overflow-hidden">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <i class="fa-solid fa-fire text-amber-300 text-2xl"></i>
-          </div>
+        <!-- Logo DAPM PNG -->
+        <div class="w-20 h-20 mx-auto flex items-center justify-center overflow-hidden drop-shadow-md">
+          <img src="logo-dapm.png" alt="Logo DAPM" class="w-full h-full object-contain">
         </div>
         <div>
           <h2 class="font-black text-2xl text-slate-900 tracking-tight">UPK DAPM TRB</h2>
@@ -67,15 +65,15 @@
     </div>
   </div>
 
-  <!-- ==================== DASHBOARD UTAMA (SETELAH LOGIN) ==================== -->
+  <!-- ==================== DASHBOARD UTAMA ==================== -->
   <div id="dashboardApp" class="hidden flex h-screen overflow-hidden">
     
-    <!-- Sidebar Menyamping (Kiri) -->
-    <aside id="sidebarNav" class="w-72 bank-gradient text-slate-300 flex flex-col flex-shrink-0 no-print border-r border-slate-800 sidebar-transition">
+    <!-- Sidebar Menyamping (Kiri) dengan Fitur Hover-Out / Auto Hide -->
+    <aside id="sidebarNav" onmouseleave="autoHideSidebar()" class="w-72 bank-gradient text-slate-300 flex flex-col flex-shrink-0 no-print border-r border-slate-800 sidebar-transition z-40">
       <div class="p-5 border-b border-slate-800/80 flex items-center justify-between">
         <div class="flex items-center space-x-3 overflow-hidden">
-          <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-amber-300 font-black shadow-lg flex-shrink-0 text-sm border-2 border-amber-400">
-            <i class="fa-solid fa-fire"></i>
+          <div class="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden bg-white/10 flex-shrink-0 border border-amber-400/30">
+            <img src="logo-dapm.png" alt="Logo DAPM" class="w-8 h-8 object-contain">
           </div>
           <div class="sidebar-text truncate">
             <h1 class="font-black text-sm text-white tracking-wide">UPK DAPM TRB</h1>
@@ -138,7 +136,7 @@
       <!-- Top Header -->
       <header class="bg-white border-b border-slate-200 h-20 px-8 flex justify-between items-center no-print shadow-xs">
         <div class="flex items-center gap-4">
-          <button id="sidebarToggleBtn" onclick="toggleSidebar()" class="hidden text-slate-700 hover:text-blue-900 p-2 rounded-xl bg-slate-100 hover:bg-slate-200 transition" title="Buka Menu">
+          <button id="sidebarToggleBtn" onclick="toggleSidebar()" class="text-slate-700 hover:text-blue-900 p-2 rounded-xl bg-slate-100 hover:bg-slate-200 transition" title="Buka Menu">
             <i class="fa-solid fa-bars text-lg"></i>
           </button>
           <div>
@@ -716,7 +714,7 @@
                 <tfoot>
                   <tr class="bg-amber-400 text-slate-950 font-black text-xs border-t-2 border-slate-900">
                     <td colspan="4" class="p-3.5 border text-center uppercase">TOTAL</td>
-                    <td class="p-3.5 border text-center">129</td>
+                    <td class="p-3.5 border text-center">3</td>
                     <td class="p-3.5 border text-right">-</td>
                     <td class="p-3.5 border text-right">93.000.000</td>
                     <td colspan="7" class="p-3.5 border text-right">-</td>
@@ -901,7 +899,7 @@
               <div class="text-right">Tanete Riattang Barat, 31 Juli 2026</div>
               <div class="grid grid-cols-3 gap-4 text-center">
                 <div class="space-y-16"><p>Disupervisi oleh :</p><p class="underline font-bold">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</p><p class="font-normal">BPP</p></div>
-                <div class="space-y-16"><p>Disetujui oleh :</p><p class="font-bold">( H.Jadjdji Irfan )</p><p class="uppercase">Kepala Upk</p></div>
+                <div class="space-y-16"><p>Disetujui oleh :</p><p class="font-bold">( H.Jadjdji Irfan )</p><p class="uppercase">KEPALA UPK</p></div>
                 <div class="space-y-16"><p>Dibuat Oleh :</p><p class="font-bold">Harman, S.M</p><p class="uppercase">Kabag Keuangan UPK</p></div>
               </div>
             </div>
@@ -999,7 +997,7 @@
                     <td colspan="4" class="p-2.5 border text-right uppercase">Total Transaksi s/d bulan ini Tahun berjalan</td>
                     <td class="p-2.5 border text-right" id="sumPokok2">0</td>
                     <td class="p-2.5 border text-right" id="sumJasa2">0</td>
-                    <td class="p-2.5 border text-right" id="sumLainDesa2">0</td>
+                    <td class="p-2.5 border text-right" id="sumLDesa2">0</td>
                     <td class="p-2.5 border text-right" id="sumTarik2">0</td>
                     <td class="p-2.5 border text-right" id="sumSetor2">0</td>
                     <td class="p-2.5 border text-right" id="sumPinj2">0</td>
@@ -1178,7 +1176,7 @@
 
         <!-- ==================== 10. PINJAMAN PERORANGAN ==================== -->
         <div id="panel-pinjamanper" class="tab-panel hidden space-y-4">
-          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-4">
+          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
             <h3 class="font-black text-sm text-slate-900 uppercase border-b pb-3">Laporan Perkembangan Pinjaman Perorangan</h3>
             <div class="overflow-x-auto">
               <table class="w-full text-xs text-left border-collapse">
@@ -1209,7 +1207,7 @@
 
         <!-- ==================== 11. KOLEKTIBILITAS ==================== -->
         <div id="panel-kolek" class="tab-panel hidden space-y-4">
-          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-4">
+          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
             <h3 class="font-black text-sm text-slate-900 uppercase border-b pb-3">Laporan Kolektibilitas Pinjaman (Kolek 1 - 5)</h3>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
               <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl">
@@ -1390,12 +1388,21 @@
   <script>
     let isSidebarHidden = false;
 
+    window.addEventListener('DOMContentLoaded', () => {
+      if(localStorage.getItem('upk_logged_in') === 'true') {
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('dashboardApp').classList.remove('hidden');
+      }
+      calculateFinancials();
+    });
+
     function handleLogin(event) {
       event.preventDefault();
       const u = document.getElementById('usernameInput').value;
       const p = document.getElementById('passwordInput').value;
 
       if(u === 'admin' && p === 'admin2026') {
+        localStorage.setItem('upk_logged_in', 'true');
         document.getElementById('loginScreen').classList.add('hidden');
         document.getElementById('dashboardApp').classList.remove('hidden');
       } else {
@@ -1405,6 +1412,7 @@
 
     function logoutSystem() {
       if(confirm('Keluar dari sistem pelaporan?')) {
+        localStorage.removeItem('upk_logged_in');
         document.getElementById('dashboardApp').classList.add('hidden');
         document.getElementById('loginScreen').classList.remove('hidden');
       }
@@ -1428,6 +1436,18 @@
       }
     }
 
+    function autoHideSidebar() {
+      const sidebar = document.getElementById('sidebarNav');
+      const toggleBtn = document.getElementById('sidebarToggleBtn');
+      if(!isSidebarHidden) {
+        sidebar.style.width = '0px';
+        sidebar.style.padding = '0px';
+        sidebar.style.overflow = 'hidden';
+        toggleBtn.classList.remove('hidden');
+        isSidebarHidden = true;
+      }
+    }
+
     function switchTab(tabId) {
       document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.add('hidden'));
       document.getElementById('panel-' + tabId).classList.remove('hidden');
@@ -1448,7 +1468,7 @@
         document.getElementById('sppModalTitle').textContent = "Input Transaksi Kas SPP";
         document.getElementById('sppTanggal').value = new Date().toISOString().split('T')[0];
         const tbody = document.getElementById('tbody-kasspp');
-        document.getElementById('sppKwt').value = `KWT-${String(tbody.rows.length - 1).padStart(3, '0')}`;
+        document.getElementById('sppKwt').value = `KWT-${String(tbody.rows.length + 1).padStart(3, '0')}`;
         document.getElementById('sppUraian').value = '';
         document.getElementById('sppPokok').value = '';
         document.getElementById('sppJasa').value = '';
@@ -1471,7 +1491,7 @@
         document.getElementById('kasOprModalTitle').textContent = "Input Transaksi Kas Operasional";
         document.getElementById('kasOprTanggal').value = new Date().toISOString().split('T')[0];
         const tbody = document.getElementById('tbody-kasop');
-        document.getElementById('kasOprKwt').value = `KWT-OPR-${String(tbody.rows.length - 1).padStart(3, '0')}`;
+        document.getElementById('kasOprKwt').value = `KWT-OPR-${String(tbody.rows.length + 1).padStart(3, '0')}`;
         document.getElementById('kasOprUraian').value = '';
         document.getElementById('kasOprNominal').value = '';
         document.getElementById('kasOprModal').classList.remove('hidden');
@@ -1495,7 +1515,7 @@
       }
     }
 
-    // KALKULASI MENYELURUH, DINAMIS & TERSINKRONISASI OTOMATIS
+    // KALKULASI & SINKRONISASI FINANSIAL
     function calculateFinancials() {
       // 1. KAS SPP
       const tbodySpp = document.getElementById('tbody-kasspp');
@@ -1541,7 +1561,7 @@
 
       document.getElementById('sumPokok2').innerText = totP2.toLocaleString('id-ID');
       document.getElementById('sumJasa2').innerText = totJ2.toLocaleString('id-ID');
-      document.getElementById('sumLainDesa2').innerText = totLD2.toLocaleString('id-ID');
+      document.getElementById('sumLainDesa2').innerText = totLD2 > 0 ? totLD2.toLocaleString('id-ID') : '-';
       document.getElementById('sumTarik2').innerText = totTarik2.toLocaleString('id-ID');
       document.getElementById('sumSetor2').innerText = totSetor2.toLocaleString('id-ID');
       document.getElementById('sumPinj2').innerText = totPinj2.toLocaleString('id-ID');
@@ -1560,7 +1580,7 @@
       document.getElementById('saldoKumulatif').innerText = runningSaldoSpp.toLocaleString('id-ID');
 
 
-      // 2. BANK SPP (LINKED OTOMATIS DENGAN KAS SPP: sumSetor dan sumTarik)
+      // 2. BANK SPP (SINKRONISASI OTOMATIS DARI KAS SPP)
       const tbodyBank = document.getElementById('tbody-bankspp');
       while (tbodyBank.rows.length > 2) {
         tbodyBank.deleteRow(2);
@@ -1571,7 +1591,7 @@
       let bankSumBunga = 0;
       let bankSumPajak = 0;
       let bankSumAdm = 0;
-      let runningSaldoBank = 2132357; // Saldo awal s/d bln lalu
+      let runningSaldoBank = 2132357;
 
       let bankRowIdx = 0;
       for(let i = 2; i < tbodySpp.rows.length; i++) {
@@ -1651,7 +1671,7 @@
       document.getElementById('neracaTotalBank').innerText = runningSaldoBank.toLocaleString('id-ID');
 
 
-      // 3. KAS OPERASIONAL (TOTAL 15 KOLOM DINAMIS)
+      // 3. KAS OPERASIONAL
       const tbodyOpr = document.getElementById('tbody-kasop');
       let sumsOpr = Array(15).fill(0);
       let runningSaldoOpr = 1613477;
@@ -1798,7 +1818,7 @@
         `;
         tbody.appendChild(tr);
       }
-      closeSppModal(); // TUTUP MODAL TERLEBIH DAHULU SECARA INSTAN TANPA JEDA
+      closeSppModal(); // TUTUP MODAL INSTAN TANPA JEDA
       calculateFinancials();
     }
 
@@ -1826,7 +1846,7 @@
       const tbody = document.getElementById('tbody-bankspp');
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td class="p-2.5 border text-center">${tbody.rows.length - 2}</td>
+        <td class="p-2.5 border text-center">${tbody.rows.length + 1}</td>
         <td class="p-2.5 border text-center">${formattedTgl}</td>
         <td class="p-2.5 border font-bold">${uraian}</td>
         <td class="p-2.5 border text-center">${kwt}</td>
@@ -1839,7 +1859,7 @@
         <td class="p-2.5 border text-center no-print"><button onclick="deleteRow(this)" class="text-rose-600 font-bold">Hapus</button></td>
       `;
       tbody.appendChild(tr);
-      closeBankSppModal(); // TUTUP MODAL TERLEBIH DAHULU SECARA INSTAN TANPA JEDA
+      closeBankSppModal(); // TUTUP MODAL INSTAN TANPA JEDA
       calculateFinancials();
     }
 
@@ -1877,7 +1897,7 @@
       } else {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="p-2.5 border text-center">${tbody.rows.length - 1}</td>
+          <td class="p-2.5 border text-center">${tbody.rows.length + 1}</td>
           <td class="p-2.5 border text-center">${formattedTgl}</td>
           <td class="p-2.5 border font-bold">${uraian}</td>
           <td class="p-2.5 border text-center">${kwt}</td>
@@ -1904,7 +1924,7 @@
         `;
         tbody.appendChild(tr);
       }
-      closeKasOprModal(); // TUTUP MODAL TERLEBIH DAHULU SECARA INSTAN TANPA JEDA
+      closeKasOprModal(); // TUTUP MODAL INSTAN TANPA JEDA
       calculateFinancials();
     }
 
@@ -1942,10 +1962,6 @@
         calculateFinancials();
       }
     }
-
-    window.onload = function() {
-      calculateFinancials();
-    };
   </script>
 </body>
 </html>
