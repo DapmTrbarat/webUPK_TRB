@@ -22,7 +22,7 @@
       background: linear-gradient(135deg, #0a192f 0%, #172a45 50%, #1f4068 100%);
     }
     .sidebar-transition {
-      transition: all 0.3s ease-in-out;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   </style>
 </head>
@@ -65,10 +65,13 @@
     </div>
   </div>
 
+  <!-- Area Pemicu Hover Kiri untuk Menampilkan Sidebar -->
+  <div onmouseenter="showSidebar()" class="fixed left-0 top-0 w-3 h-full z-30 no-print"></div>
+
   <!-- ==================== DASHBOARD UTAMA ==================== -->
   <div id="dashboardApp" class="hidden flex h-screen overflow-hidden">
     
-    <!-- Sidebar Menyamping (Kiri) dengan Fitur Hover-Out / Auto Hide -->
+    <!-- Sidebar Menyamping (Kiri) dengan Hover Auto-Hide -->
     <aside id="sidebarNav" onmouseleave="autoHideSidebar()" class="w-72 bank-gradient text-slate-300 flex flex-col flex-shrink-0 no-print border-r border-slate-800 sidebar-transition z-40">
       <div class="p-5 border-b border-slate-800/80 flex items-center justify-between">
         <div class="flex items-center space-x-3 overflow-hidden">
@@ -162,23 +165,23 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
               <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Total Aktiva</p>
-              <p class="text-2xl font-black text-blue-950 mt-2">Rp 2.098.257.150</p>
-              <span class="text-[11px] text-emerald-600 font-bold mt-2 inline-flex items-center gap-1 bg-emerald-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-arrow-up"></i> Seimbang & Auditor Certified</span>
+              <p class="text-2xl font-black text-blue-950 mt-2">Rp 0</p>
+              <span class="text-[11px] text-emerald-600 font-bold mt-2 inline-flex items-center gap-1 bg-emerald-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-arrow-up"></i> Siap Input Data Baru</span>
             </div>
             <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
               <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Total Kas & Bank</p>
-              <p class="text-2xl font-black text-emerald-700 mt-2" id="dashTotalKasBank">Rp 27.836.344</p>
+              <p class="text-2xl font-black text-emerald-700 mt-2" id="dashTotalKasBank">Rp 0</p>
               <span class="text-[11px] text-emerald-600 font-bold mt-2 inline-flex items-center gap-1 bg-emerald-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-wallet"></i> Likuiditas Realtime</span>
             </div>
             <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
               <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Saldo Pinjaman</p>
-              <p class="text-2xl font-black text-indigo-700 mt-2">Rp 1.585.245.000</p>
-              <span class="text-[11px] text-indigo-600 font-bold mt-2 inline-flex items-center gap-1 bg-indigo-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-users"></i> Aktif Berjalan</span>
+              <p class="text-2xl font-black text-indigo-700 mt-2">Rp 0</p>
+              <span class="text-[11px] text-indigo-600 font-bold mt-2 inline-flex items-center gap-1 bg-indigo-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-users"></i> Kosong</span>
             </div>
             <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
               <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Laba / (Rugi) Berjalan</p>
-              <p class="text-2xl font-black text-rose-600 mt-2" id="dashLabaRugi">-Rp 228.780</p>
-              <span class="text-[11px] text-rose-600 font-bold mt-2 inline-flex items-center gap-1 bg-rose-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-chart-line"></i> Terintegrasi Rugi Laba</span>
+              <p class="text-2xl font-black text-rose-600 mt-2" id="dashLabaRugi">Rp 0</p>
+              <span class="text-[11px] text-rose-600 font-bold mt-2 inline-flex items-center gap-1 bg-rose-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-chart-line"></i> Bersih</span>
             </div>
           </div>
         </div>
@@ -209,8 +212,8 @@
                   <tr>
                     <td class="p-3.5 border text-center">2</td>
                     <td class="p-3.5 border">Rekening Simpanan SPP - Bank BRI</td>
-                    <td class="p-3.5 border text-right font-bold" id="rekonBankSppBuku">2.132.357</td>
-                    <td class="p-3.5 border text-right font-bold" id="rekonBankSppKoran">2.132.357</td>
+                    <td class="p-3.5 border text-right font-bold" id="rekonBankSppBuku">0</td>
+                    <td class="p-3.5 border text-right font-bold" id="rekonBankSppKoran">0</td>
                     <td class="p-3.5 border text-right text-emerald-600 font-bold">0</td>
                   </tr>
                 </tbody>
@@ -226,7 +229,7 @@
               <p class="text-xs font-bold uppercase text-slate-400">Form. 84.e</p>
               <h3 class="font-black text-base text-slate-900 uppercase tracking-wide">UNIT PENGELOLA KEGIATAN</h3>
               <h4 class="font-black text-lg text-blue-950 uppercase tracking-wider">N E R A C A K E G I A T A N M I C R O F I N A N C E</h4>
-              <p class="text-xs font-bold text-slate-600">Periode a/d 31 Juli 2026</p>
+              <p class="text-xs font-bold text-slate-600">Periode Berjalan</p>
             </div>
             <div class="text-xs font-bold text-slate-700">
               Kecamatan : Tanete Riattang Barat, Bone, SulSel
@@ -254,29 +257,21 @@
                     <td class="p-2.5 border-r font-bold">Kas</td>
                     <td class="p-2.5 text-right"></td>
                     <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 border-r">Kelembagaan 2024</td>
-                    <td class="p-2.5 text-right">2.719.000</td>
+                    <td class="p-2.5 border-r">Kelembagaan</td>
+                    <td class="p-2.5 text-right">0</td>
                   </tr>
                   <tr>
                     <td class="p-2.5 border-r text-slate-400">1.1.1</td>
                     <td class="p-2.5 border-r pl-6">Kas Operasional UPK</td>
-                    <td class="p-2.5 text-right font-semibold" id="neracaKasOpr">357.987</td>
+                    <td class="p-2.5 text-right font-semibold" id="neracaKasOpr">0</td>
                     <td class="p-2.5 border-r"></td>
                     <td class="p-2.5 border-r">Pinjaman Pihak Ke3</td>
-                    <td class="p-2.5 text-right">50.000.000</td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r text-slate-400">1.1.2</td>
-                    <td class="p-2.5 border-r pl-6">Kas Pengembalian UEP</td>
                     <td class="p-2.5 text-right">0</td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 text-right"></td>
                   </tr>
                   <tr>
                     <td class="p-2.5 border-r text-slate-400">1.1.3</td>
                     <td class="p-2.5 border-r pl-6">Kas Pengembalian SPP</td>
-                    <td class="p-2.5 text-right font-semibold" id="neracaKasSpp">25.346.000</td>
+                    <td class="p-2.5 text-right font-semibold" id="neracaKasSpp">0</td>
                     <td class="p-2.5 border-r"></td>
                     <td class="p-2.5 border-r"></td>
                     <td class="p-2.5 text-right"></td>
@@ -284,7 +279,7 @@
                   <tr class="bg-slate-100 font-bold">
                     <td class="p-2.5 border-r"></td>
                     <td class="p-2.5 border-r text-right uppercase">Total Kas</td>
-                    <td class="p-2.5 text-right font-bold" id="neracaTotalKas">25.703.987</td>
+                    <td class="p-2.5 text-right font-bold" id="neracaTotalKas">0</td>
                     <td class="p-2.5 border-r">3</td>
                     <td class="p-2.5 border-r font-bold">MODAL</td>
                     <td class="p-2.5 text-right"></td>
@@ -298,115 +293,43 @@
                     <td class="p-2.5 text-right">0</td>
                   </tr>
                   <tr>
-                    <td class="p-2.5 border-r text-slate-400">1.2.1</td>
-                    <td class="p-2.5 border-r pl-6">Bank Operasional UPK</td>
-                    <td class="p-2.5 text-right">0</td>
-                    <td class="p-2.5 border-r">3.2</td>
-                    <td class="p-2.5 border-r pl-6">Modal alokasi BLM SPP</td>
-                    <td class="p-2.5 text-right">1.238.000.000</td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r text-slate-400">1.2.2</td>
-                    <td class="p-2.5 border-r pl-6">Bank Pengembalian UEP</td>
-                    <td class="p-2.5 text-right">0</td>
-                    <td class="p-2.5 border-r">3.3</td>
-                    <td class="p-2.5 border-r pl-6">Alokasi Operasional 2%</td>
-                    <td class="p-2.5 text-right">25.932.374</td>
-                  </tr>
-                  <tr>
                     <td class="p-2.5 border-r text-slate-400">1.2.3</td>
                     <td class="p-2.5 border-r pl-6">Bank Pengembalian SPP</td>
-                    <td class="p-2.5 text-right font-semibold" id="neracaBankSpp">2.132.357</td>
-                    <td class="p-2.5 border-r">3.4</td>
-                    <td class="p-2.5 border-r pl-6">Modal lain-2 (donasi dsb)</td>
+                    <td class="p-2.5 text-right font-semibold" id="neracaBankSpp">0</td>
+                    <td class="p-2.5 border-r">3.2</td>
+                    <td class="p-2.5 border-r pl-6">Modal alokasi BLM SPP</td>
                     <td class="p-2.5 text-right">0</td>
                   </tr>
                   <tr class="bg-slate-100 font-bold">
                     <td class="p-2.5 border-r"></td>
                     <td class="p-2.5 border-r text-right uppercase">Total Bank</td>
-                    <td class="p-2.5 text-right font-bold" id="neracaTotalBank">2.132.357</td>
-                    <td class="p-2.5 border-r">3.5</td>
+                    <td class="p-2.5 text-right font-bold" id="neracaTotalBank">0</td>
+                    <td class="p-2.5 border-r">3.3</td>
                     <td class="p-2.5 border-r pl-6">Surplus/defisit ditahan</td>
-                    <td class="p-2.5 text-right">783.834.556</td>
+                    <td class="p-2.5 text-right">0</td>
                   </tr>
                   <tr>
                     <td class="p-2.5 border-r font-bold">1.3</td>
                     <td class="p-2.5 border-r font-bold">Saldo Pinjaman</td>
                     <td class="p-2.5 text-right"></td>
-                    <td class="p-2.5 border-r">3.6</td>
+                    <td class="p-2.5 border-r">3.4</td>
                     <td class="p-2.5 border-r pl-6">Surplus/defisit Berjalan</td>
-                    <td class="p-2.5 text-right font-semibold" id="neracaSurplusBerjalan">-228.780</td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r text-slate-400">1.3.1</td>
-                    <td class="p-2.5 border-r pl-6">Pinjaman UEP</td>
-                    <td class="p-2.5 text-right">0</td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 text-right"></td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r text-slate-400">1.3.2</td>
-                    <td class="p-2.5 border-r pl-6">Pinjaman Kelompok</td>
-                    <td class="p-2.5 text-right">772.028.500</td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 text-right"></td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r text-slate-400">1.3.3</td>
-                    <td class="p-2.5 border-r pl-6">Pinjaman Individu</td>
-                    <td class="p-2.5 text-right">813.216.500</td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 text-right"></td>
-                  </tr>
-                  <tr class="bg-slate-100 font-bold">
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 border-r text-right uppercase">Total Pinjaman</td>
-                    <td class="p-2.5 text-right">1.585.245.000</td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 text-right"></td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r font-bold">1.4</td>
-                    <td class="p-2.5 border-r">Biaya dibayar dimuka</td>
-                    <td class="p-2.5 text-right">0</td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 text-right"></td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r font-bold">1.5</td>
-                    <td class="p-2.5 border-r font-bold">Inventaris (Nilai Buku)</td>
-                    <td class="p-2.5 text-right">392.175.806</td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 text-right"></td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r font-bold">1.6</td>
-                    <td class="p-2.5 border-r font-bold">Aktiva Tetap (Tanah dsb)</td>
-                    <td class="p-2.5 text-right">93.000.000</td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 border-r"></td>
-                    <td class="p-2.5 text-right"></td>
+                    <td class="p-2.5 text-right font-semibold" id="neracaSurplusBerjalan">0</td>
                   </tr>
                 </tbody>
                 <tfoot>
                   <tr class="bg-amber-400 text-slate-950 font-black text-sm border-t-2 border-slate-900">
                     <td colspan="2" class="p-3.5 border-r border-slate-400 text-center uppercase">TOTAL AKTIVA</td>
-                    <td class="p-3.5 text-right border-r border-slate-400" id="neracaTotalAktiva">2.098.257.150</td>
+                    <td class="p-3.5 text-right border-r border-slate-400" id="neracaTotalAktiva">0</td>
                     <td colspan="2" class="p-3.5 border-r border-slate-400 text-center uppercase">TOTAL PASIVA</td>
-                    <td class="p-3.5 text-right" id="neracaTotalPasiva">2.098.257.150</td>
+                    <td class="p-3.5 text-right" id="neracaTotalPasiva">0</td>
                   </tr>
                 </tfoot>
               </table>
             </div>
 
             <div class="pt-8 space-y-6 text-xs font-bold text-slate-800">
-              <div class="text-right">Tanete Riattang Barat, 31 Juli 2026</div>
+              <div class="text-right">Tanete Riattang Barat, 2026</div>
               <div class="grid grid-cols-3 gap-4 text-center">
                 <div class="space-y-16"><p>Disupervisi oleh :</p><p class="underline font-bold">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</p><p class="font-normal">BPP</p></div>
                 <div class="space-y-16"><p>Disetujui oleh :</p><p class="font-bold">( H.Jadjdji Irfan )</p><p class="uppercase">KEPALA UPK</p></div>
@@ -423,7 +346,7 @@
               <p class="text-xs font-bold uppercase text-slate-400">Form. 84.d</p>
               <h3 class="font-black text-base text-slate-900 uppercase tracking-wide">UNIT PENGELOLA KEGIATAN</h3>
               <h4 class="font-black text-lg text-blue-950 uppercase tracking-wider">L A P O R A N R U G I / L A B A M I C R O F I N A N C E</h4>
-              <p class="text-xs font-bold text-slate-600">Periode s/d 31 Juli 2026</p>
+              <p class="text-xs font-bold text-slate-600">Periode Berjalan</p>
             </div>
             <div class="text-xs font-bold text-slate-700">
               Kecamatan : Tanete Riattang Barat, Bone, SulSel
@@ -448,15 +371,9 @@
                     <td colspan="3" class="p-2.5 font-bold">Pendapatan Operasional</td>
                   </tr>
                   <tr>
-                    <td class="p-2.5 border-r text-slate-400">4.1.1</td>
-                    <td class="p-2.5 border-r pl-6">Jasa Pengembalian UEP</td>
-                    <td class="p-2.5 text-right">0</td>
-                    <td class="p-2.5 text-right"></td>
-                  </tr>
-                  <tr>
                     <td class="p-2.5 border-r text-slate-400">4.1.2</td>
                     <td class="p-2.5 border-r pl-6">Jasa Pengembalian SPP</td>
-                    <td class="p-2.5 text-right">85.171.500</td>
+                    <td class="p-2.5 text-right">0</td>
                     <td class="p-2.5 text-right"></td>
                   </tr>
                   <tr>
@@ -465,26 +382,10 @@
                     <td class="p-2.5 text-right font-semibold" id="rlJasaSppLink">0</td>
                     <td class="p-2.5 text-right"></td>
                   </tr>
-                  <tr>
-                    <td class="p-2.5 border-r font-bold">4.2</td>
-                    <td colspan="3" class="p-2.5 font-bold">Pendapatan Non Operasional</td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r text-slate-400">4.2.1</td>
-                    <td class="p-2.5 border-r pl-6">Bunga Bank Operasional UPK</td>
-                    <td class="p-2.5 text-right font-semibold" id="rlBungaBank">17.873.523</td>
-                    <td class="p-2.5 text-right"></td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r text-slate-400">4.2.4</td>
-                    <td class="p-2.5 border-r pl-6">Pendapatan Non Operasional Lain-Lain</td>
-                    <td class="p-2.5 text-right">500.000</td>
-                    <td class="p-2.5 text-right"></td>
-                  </tr>
                   <tr class="bg-slate-100 font-black">
                     <td colspan="2" class="p-3 border-r text-right uppercase">TOTAL PENDAPATAN</td>
                     <td class="p-3 border-r text-right"></td>
-                    <td class="p-3 text-right text-blue-950 font-black" id="rlTotalPendapatan">103.545.023</td>
+                    <td class="p-3 text-right text-blue-950 font-black" id="rlTotalPendapatan">0</td>
                   </tr>
 
                   <tr>
@@ -498,63 +399,35 @@
                   <tr>
                     <td class="p-2.5 border-r text-slate-400">5.2.1</td>
                     <td class="p-2.5 border-r pl-6">Honor Pengurus UPK</td>
-                    <td class="p-2.5 text-right font-semibold" id="rlHonor">69.500.000</td>
+                    <td class="p-2.5 text-right font-semibold" id="rlHonor">0</td>
                     <td class="p-2.5 text-right"></td>
                   </tr>
                   <tr>
                     <td class="p-2.5 border-r text-slate-400">5.2.2</td>
                     <td class="p-2.5 border-r pl-6">Administrasi dan Umum</td>
-                    <td class="p-2.5 text-right font-semibold" id="rlAdm">3.283.052</td>
+                    <td class="p-2.5 text-right font-semibold" id="rlAdm">0</td>
                     <td class="p-2.5 border-r font-semibold"></td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r text-slate-400">5.2.6</td>
-                    <td class="p-2.5 border-r pl-6">Biaya Operasional lain-lain</td>
-                    <td class="p-2.5 text-right font-semibold" id="rlLainOps">12.967.228</td>
-                    <td class="p-2.5 border-r font-bold" id="rlTotalBiayaOps">85.750.280</td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r font-bold">5.4</td>
-                    <td colspan="3" class="p-2.5 font-bold">Biaya Non Operasional</td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r text-slate-400">5.4.1</td>
-                    <td class="p-2.5 border-r pl-6">Pajak Bank Operasional UPK</td>
-                    <td class="p-2.5 text-right font-semibold" id="rlPajakBank">3.570.999</td>
-                    <td class="p-2.5 border-r"></td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r text-slate-400">5.4.4</td>
-                    <td class="p-2.5 border-r pl-6">Adm Bank Operasional UPK</td>
-                    <td class="p-2.5 text-right font-semibold" id="rlAdmBank">1.335.827</td>
-                    <td class="p-2.5 border-r"></td>
-                  </tr>
-                  <tr>
-                    <td class="p-2.5 border-r text-slate-400">5.4.7</td>
-                    <td class="p-2.5 border-r pl-6">Biaya Non Operasional Lain-lain</td>
-                    <td class="p-2.5 text-right">60.000</td>
-                    <td class="p-2.5 border-r font-bold" id="rlTotalNonOps">5.056.826</td>
                   </tr>
                 </tbody>
                 <tfoot>
                   <tr class="bg-slate-100 font-black">
                     <td colspan="2" class="p-3 border-r text-right uppercase">TOTAL BIAYA</td>
                     <td class="p-3 border-r text-right"></td>
-                    <td class="p-3 text-right text-rose-700 font-black" id="rlTotalBiaya">90.807.106</td>
+                    <td class="p-3 text-right text-rose-700 font-black" id="rlTotalBiaya">0</td>
                   </tr>
                   <tr class="bg-amber-400 text-slate-950 font-black text-sm border-t-2 border-slate-900">
                     <td colspan="2" class="p-3.5 border-r border-slate-400 uppercase">LABA / (RUGI)</td>
-                    <td colspan="2" class="p-3.5 text-right font-black" id="rlLabaRugi">12.737.917</td>
+                    <td colspan="2" class="p-3.5 text-right font-black" id="rlLabaRugi">0</td>
                   </tr>
                 </tfoot>
               </table>
             </div>
 
             <div class="pt-8 space-y-6 text-xs font-bold text-slate-800">
-              <div class="text-right">Tanete Riattang Barat, 31 Juli 2026</div>
+              <div class="text-right">Tanete Riattang Barat, 2026</div>
               <div class="grid grid-cols-3 gap-4 text-center">
                 <div class="space-y-16"><p>Disupervisi oleh :</p><p class="underline font-bold">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</p><p class="font-normal">BPP</p></div>
-                <div class="space-y-16"><p>Disetujui oleh :</p><p class="font-bold">( H.Jadjdji Irfan )</p><p class="uppercase">KEPALA UPK</p></div>
+                <div class="space-y-16"><p>Disetujui oleh :</p><p class="font-bold">( H.Jadjdji Irfan )</p><p class="uppercase">Kepala Upk</p></div>
                 <div class="space-y-16"><p>Dibuat oleh :</p><p class="font-bold">( Harman, S.M )</p><p class="uppercase">KABAG KEUANGAN UPK</p></div>
               </div>
             </div>
@@ -567,7 +440,7 @@
             <div class="text-center space-y-1 border-b pb-4">
               <h3 class="font-black text-base text-slate-900 uppercase tracking-wide">DAFTAR INVENTARIS UPK</h3>
               <h4 class="font-black text-lg text-blue-950 uppercase tracking-wider">DAPM MANDIRI</h4>
-              <p class="text-xs font-bold text-slate-600">Periode s/d 31 Juli 2026</p>
+              <p class="text-xs font-bold text-slate-600">Periode Berjalan</p>
             </div>
             <div class="text-xs font-bold text-slate-700 flex justify-between">
               <span>Kecamatan : Tanete Riattang Barat, Bone, SulSel</span>
@@ -587,64 +460,19 @@
                     <th class="p-2.5 border border-slate-700 w-14">Unit</th>
                     <th class="p-2.5 border border-slate-700 w-28">Harga Satuan</th>
                     <th class="p-2.5 border border-slate-700 w-28">Harga Perolehan</th>
-                    <th class="p-2.5 border border-slate-700 w-20">Umur Ekonomis (Bln)</th>
-                    <th class="p-2.5 border border-slate-700 w-24">Penyusutan / bln</th>
-                    <th class="p-2.5 border border-slate-700 w-20">Umur Pakai s/d Tahun lalu</th>
-                    <th class="p-2.5 border border-slate-700 w-28">Akumulasi Penyusutan s/d Tahun lalu</th>
-                    <th class="p-2.5 border border-slate-700 w-20">Umur Pakai (bln) Tahun berjalan</th>
-                    <th class="p-2.5 border border-slate-700 w-28">Biaya Penyusutan Tahun berjalan</th>
-                    <th class="p-2.5 border border-slate-700 w-20">Total Umur Pakai s/d Tahun ini</th>
-                    <th class="p-2.5 border border-slate-700 w-28">Total Penyusutan s/d Tahun ini</th>
-                    <th class="p-2.5 border border-slate-700 w-32">Nilai buku</th>
                     <th class="p-2.5 border border-slate-700 w-16 no-print">Aksi</th>
                   </tr>
                 </thead>
                 <tbody id="tbody-inventaris" class="divide-y divide-slate-300 font-medium text-slate-800">
-                  <tr>
-                    <td class="p-2.5 border text-center font-bold">1</td>
-                    <td class="p-2.5 border font-bold">Bangunan Kantor UPK dan kelengkapan lainnya</td>
-                    <td class="p-2.5 border text-center">17/03/17</td>
-                    <td class="p-2.5 border text-center">1</td>
-                    <td class="p-2.5 border text-center">1</td>
-                    <td class="p-2.5 border text-right">324.357.000</td>
-                    <td class="p-2.5 border text-right">324.357.000</td>
-                    <td class="p-2.5 border text-center">360</td>
-                    <td class="p-2.5 border text-right">900.992</td>
-                    <td class="p-2.5 border text-center">0</td>
-                    <td class="p-2.5 border text-right">0</td>
-                    <td class="p-2.5 border text-center">0</td>
-                    <td class="p-2.5 border text-right">-</td>
-                    <td class="p-2.5 border text-center">0</td>
-                    <td class="p-2.5 border text-right">-</td>
-                    <td class="p-2.5 border text-right font-bold">324.357.000</td>
-                    <td class="p-2.5 border text-center no-print"><button onclick="deleteRow(this)" class="text-rose-600 font-bold">Hapus</button></td>
-                  </tr>
                 </tbody>
                 <tfoot>
                   <tr class="bg-amber-400 text-slate-950 font-black text-xs border-t-2 border-slate-900">
-                    <td colspan="4" class="p-3.5 border text-center uppercase">TOTAL</td>
-                    <td class="p-3.5 border text-center">129</td>
-                    <td class="p-3.5 border text-right">-</td>
-                    <td class="p-3.5 border text-right">403.779.000</td>
-                    <td class="p-3.5 border text-right">-</td>
-                    <td class="p-3.5 border text-right">2.344.283</td>
-                    <td colspan="2" class="p-3.5 border text-right">11.603.194</td>
-                    <td colspan="3" class="p-3.5 border text-right">-</td>
-                    <td class="p-3.5 border text-right">11.603.194</td>
-                    <td class="p-3.5 border text-right">392.175.806</td>
+                    <td colspan="6" class="p-3.5 border text-center uppercase">TOTAL</td>
+                    <td class="p-3.5 border text-right">0</td>
                     <td class="no-print"></td>
                   </tr>
                 </tfoot>
               </table>
-            </div>
-
-            <div class="pt-8 space-y-6 text-xs font-bold text-slate-800">
-              <div class="text-right">Tanete Riattang Barat, 31 Juli 2026</div>
-              <div class="grid grid-cols-3 gap-4 text-center">
-                <div class="space-y-16"><p>Disupervisi oleh :</p><p class="underline font-bold">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</p><p class="font-normal">BPP / BP</p></div>
-                <div class="space-y-16"><p>Disetujui oleh :</p><p class="font-bold">( H.Jadjdji Irfan )</p><p class="uppercase">Kepala Upk</p></div>
-                <div class="space-y-16"><p>Dibuat oleh :</p><p class="font-bold">( Harman S.M )</p><p class="uppercase">Kabag Keuangan UPK</p></div>
-              </div>
             </div>
           </div>
         </div>
@@ -655,7 +483,7 @@
             <div class="text-center space-y-1 border-b pb-4">
               <h3 class="font-black text-base text-slate-900 uppercase tracking-wide">DAFTAR AKTIVA TETAP UPK</h3>
               <h4 class="font-black text-lg text-blue-950 uppercase tracking-wider">DAPM MANDIRI</h4>
-              <p class="text-xs font-bold text-slate-600">Periode s/d 31 Juli 2026</p>
+              <p class="text-xs font-bold text-slate-600">Periode Berjalan</p>
             </div>
             <div class="text-xs font-bold text-slate-700 flex justify-between">
               <span>Kecamatan : Tanete Riattang Barat, Bone, SulSel</span>
@@ -669,70 +497,22 @@
                 <thead>
                   <tr class="bg-blue-950 text-white font-bold uppercase text-center align-middle">
                     <th class="p-2.5 border border-slate-700 w-10">No</th>
-                    <th class="p-2.5 border border-slate-700 min-w-[180px]">Jenis Inventaris</th>
+                    <th class="p-2.5 border border-slate-700 min-w-[180px]">Jenis Aktiva</th>
                     <th class="p-2.5 border border-slate-700 w-24">Tanggal Beli</th>
-                    <th class="p-2.5 border border-slate-700 w-16">Alat Bukti</th>
-                    <th class="p-2.5 border border-slate-700 w-14">Unit</th>
-                    <th class="p-2.5 border border-slate-700 w-28">Harga Satuan</th>
                     <th class="p-2.5 border border-slate-700 w-28">Harga Perolehan</th>
-                    <th class="p-2.5 border border-slate-700 w-20">Umur Ekonomis (Bln)</th>
-                    <th class="p-2.5 border border-slate-700 w-24">Penyusutan / bln</th>
-                    <th class="p-2.5 border border-slate-700 w-20">Umur Pakai s/d Tahun lalu</th>
-                    <th class="p-2.5 border border-slate-700 w-28">Akumulasi Penyusutan s/d Tahun lalu</th>
-                    <th class="p-2.5 border border-slate-700 w-20">Umur Pakai (bln) Tahun berjalan</th>
-                    <th class="p-2.5 border border-slate-700 w-28">Biaya Penyusutan Tahun berjalan</th>
-                    <th class="p-2.5 border border-slate-700 w-20">Total Umur Pakai s/d Tahun ini</th>
-                    <th class="p-2.5 border border-slate-700 w-28">Total Penyusutan s/d Tahun ini</th>
-                    <th class="p-2.5 border border-slate-700 w-32">Nilai buku</th>
                     <th class="p-2.5 border border-slate-700 w-16 no-print">Aksi</th>
-                  </tr>
-                  <tr class="bg-slate-100 text-slate-700 font-bold text-center">
-                    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7=5x6</th><th>8</th><th>9=7/8</th><th>10</th><th>11=9*10</th><th>12</th><th>13=9x12</th><th>14</th><th>15=11+13</th><th>16=7-15</th><th class="no-print">17</th>
                   </tr>
                 </thead>
                 <tbody id="tbody-aktiva" class="divide-y divide-slate-300 font-medium text-slate-800">
-                  <tr>
-                    <td class="p-2.5 border text-center font-bold">1</td>
-                    <td class="p-2.5 border font-bold">Tanah</td>
-                    <td class="p-2.5 border text-center">03/05/14</td>
-                    <td class="p-2.5 border text-center"></td>
-                    <td class="p-2.5 border text-center">24 m</td>
-                    <td class="p-2.5 border text-right">80.000.000</td>
-                    <td class="p-2.5 border text-right">80.000.000</td>
-                    <td class="p-2.5 border text-center">-</td>
-                    <td class="p-2.5 border text-right">-</td>
-                    <td class="p-2.5 border text-center">-</td>
-                    <td class="p-2.5 border text-right">-</td>
-                    <td class="p-2.5 border text-center">0</td>
-                    <td class="p-2.5 border text-right">0</td>
-                    <td class="p-2.5 border text-center">0</td>
-                    <td class="p-2.5 border text-right">-</td>
-                    <td class="p-2.5 border text-right font-bold">80.000.000</td>
-                    <td class="p-2.5 border text-center no-print"><button onclick="deleteRow(this)" class="text-rose-600 font-bold">Hapus</button></td>
-                  </tr>
                 </tbody>
                 <tfoot>
                   <tr class="bg-amber-400 text-slate-950 font-black text-xs border-t-2 border-slate-900">
-                    <td colspan="4" class="p-3.5 border text-center uppercase">TOTAL</td>
-                    <td class="p-3.5 border text-center">3</td>
-                    <td class="p-3.5 border text-right">-</td>
-                    <td class="p-3.5 border text-right">93.000.000</td>
-                    <td colspan="7" class="p-3.5 border text-right">-</td>
-                    <td class="p-3.5 border text-right">-</td>
-                    <td class="p-3.5 border text-right">93.000.000</td>
+                    <td colspan="3" class="p-3.5 border text-center uppercase">TOTAL</td>
+                    <td class="p-3.5 border text-right">0</td>
                     <td class="no-print"></td>
                   </tr>
                 </tfoot>
               </table>
-            </div>
-
-            <div class="pt-8 space-y-6 text-xs font-bold text-slate-800">
-              <div class="text-right">Tanete Riattang Barat, 31 Juli 2026</div>
-              <div class="grid grid-cols-3 gap-4 text-center">
-                <div class="space-y-16"><p>Disupervisi oleh :</p><p class="underline font-bold">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</p><p class="font-normal">BPP</p></div>
-                <div class="space-y-16"><p>Disetujui oleh :</p><p class="font-bold">( H.Jadjdji Irfan )</p><p class="uppercase">Kepala Upk</p></div>
-                <div class="space-y-16"><p>Dibuat Oleh :</p><p class="font-bold">Harman, S.M</p><p class="uppercase">Kabag Keuangan UPK</p></div>
-              </div>
             </div>
           </div>
         </div>
@@ -788,23 +568,26 @@
                     <td class="p-2 border text-center">31-Des-25</td>
                     <td class="p-2 border">Saldo tutup buku</td>
                     <td class="p-2 border text-center">-</td>
-                    <td class="p-2 border text-right">26.272.471</td>
+                    <td class="p-2 border text-right">0</td>
                     <td class="p-2 border text-right">-</td>
                     <td class="p-2 border text-right">-</td>
-                    <td class="p-2 border text-right">903.746.800</td>
-                    <td class="p-2 border text-right">124.235</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right">0</td>
                     <td class="p-2 border text-right">-</td>
-                    <td class="p-2 border text-right">25.932.374</td>
-                    <td class="p-2 border text-right">568.516.000</td>
-                    <td class="p-2 border text-right">32.230.465</td>
-                    <td class="p-2 border text-right">600.000</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right">0</td>
                     <td class="p-2 border text-right">-</td>
-                    <td class="p-2 border text-right">33.551.000</td>
-                    <td class="p-2 border text-right">84.879.000</td>
-                    <td class="p-2 border text-right">51.885.400</td>
-                    <td class="p-2 border text-right">132.525.000</td>
-                    <td class="p-2 border text-right font-bold bg-yellow-100">24.267</td>
-                    <td class="p-2 border text-center no-print">-</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right font-bold bg-yellow-100">0</td>
+                    <td class="p-2 border text-center no-print">
+                      <button onclick="editKasOprRow(this)" class="text-blue-600 font-bold mr-1">Edit</button>
+                      <button onclick="deleteRow(this)" class="text-rose-600 font-bold">Hapus</button>
+                    </td>
                   </tr>
                   <tr class="bg-slate-100 font-bold">
                     <td class="p-2 border text-center">-</td>
@@ -814,20 +597,23 @@
                     <td class="p-2 border text-right">-</td>
                     <td class="p-2 border text-right">-</td>
                     <td class="p-2 border text-right">-</td>
-                    <td class="p-2 border text-right">96.050.000</td>
+                    <td class="p-2 border text-right">0</td>
                     <td class="p-2 border text-right">-</td>
-                    <td class="p-2 border text-right">500.000</td>
+                    <td class="p-2 border text-right">0</td>
                     <td class="p-2 border text-right">-</td>
-                    <td class="p-2 border text-right">69.500.000</td>
-                    <td class="p-2 border text-right">2.814.827</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right">0</td>
                     <td class="p-2 border text-right">-</td>
                     <td class="p-2 border text-right">-</td>
-                    <td class="p-2 border text-right">1.600.000</td>
-                    <td class="p-2 border text-right">12.525.963</td>
-                    <td class="p-2 border text-right">60.000</td>
-                    <td class="p-2 border text-right">8.460.000</td>
-                    <td class="p-2 border text-right font-bold bg-yellow-100">1.613.477</td>
-                    <td class="p-2 border text-center no-print">-</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right">0</td>
+                    <td class="p-2 border text-right font-bold bg-yellow-100">0</td>
+                    <td class="p-2 border text-center no-print">
+                      <button onclick="editKasOprRow(this)" class="text-blue-600 font-bold mr-1">Edit</button>
+                      <button onclick="deleteRow(this)" class="text-rose-600 font-bold">Hapus</button>
+                    </td>
                   </tr>
                 </tbody>
                 <tfoot>
@@ -848,7 +634,7 @@
                     <td class="p-2 border text-right" id="op1_c13">-</td>
                     <td class="p-2 border text-right" id="op1_c14">-</td>
                     <td class="p-2 border text-right" id="op1_c15">-</td>
-                    <td class="p-2 border text-right font-bold" id="saldoBulanIniOp">357.987</td>
+                    <td class="p-2 border text-right font-bold" id="saldoBulanIniOp">0</td>
                     <td class="no-print"></td>
                   </tr>
                   <tr class="bg-slate-100 font-bold text-[9px]">
@@ -856,39 +642,39 @@
                     <td class="p-2 border text-right" id="op2_c1">-</td>
                     <td class="p-2 border text-right" id="op2_c2">-</td>
                     <td class="p-2 border text-right" id="op2_c3">-</td>
-                    <td class="p-2 border text-right" id="op2_c4">96.050.000</td>
+                    <td class="p-2 border text-right" id="op2_c4">0</td>
                     <td class="p-2 border text-right" id="op2_c5">-</td>
-                    <td class="p-2 border text-right" id="op2_c6">500.000</td>
+                    <td class="p-2 border text-right" id="op2_c6">0</td>
                     <td class="p-2 border text-right" id="op2_c7">-</td>
-                    <td class="p-2 border text-right" id="op2_c8">69.500.000</td>
-                    <td class="p-2 border text-right" id="op2_c9">3.283.052</td>
+                    <td class="p-2 border text-right" id="op2_c8">0</td>
+                    <td class="p-2 border text-right" id="op2_c9">0</td>
                     <td class="p-2 border text-right" id="op2_c10">-</td>
                     <td class="p-2 border text-right" id="op2_c11">-</td>
-                    <td class="p-2 border text-right" id="op2_c12">1.600.000</td>
-                    <td class="p-2 border text-right" id="op2_c13">12.967.228</td>
-                    <td class="p-2 border text-right" id="op2_c14">60.000</td>
-                    <td class="p-2 border text-right" id="op2_c15">8.806.000</td>
-                    <td class="p-2 border text-right font-bold" id="saldoTahunBerjalanOp">357.987</td>
+                    <td class="p-2 border text-right" id="op2_c12">0</td>
+                    <td class="p-2 border text-right" id="op2_c13">0</td>
+                    <td class="p-2 border text-right" id="op2_c14">0</td>
+                    <td class="p-2 border text-right" id="op2_c15">0</td>
+                    <td class="p-2 border text-right font-bold" id="saldoTahunBerjalanOp">0</td>
                     <td class="no-print"></td>
                   </tr>
                   <tr class="bg-amber-400 text-slate-950 font-black text-[9px]">
                     <td colspan="4" class="p-2.5 border text-right uppercase">Total Transaksi Kumulatif</td>
-                    <td class="p-2 border text-right" id="op3_c1">26.272.471</td>
-                    <td class="p-2 border text-right" id="op3_c2">-</td>
-                    <td class="p-2 border text-right" id="op3_c3">-</td>
-                    <td class="p-2 border text-right" id="op3_c4">999.796.800</td>
-                    <td class="p-2 border text-right" id="op3_c5">124.235</td>
-                    <td class="p-2 border text-right" id="op3_c6">500.000</td>
-                    <td class="p-2 border text-right" id="op3_c7">25.932.374</td>
-                    <td class="p-2 border text-right" id="op3_c8">638.016.000</td>
-                    <td class="p-2 border text-right" id="op3_c9">35.513.517</td>
-                    <td class="p-2 border text-right" id="op3_c10">600.000</td>
-                    <td class="p-2 border text-right" id="op3_c11">-</td>
-                    <td class="p-2 border text-right" id="op3_c12">35.151.000</td>
-                    <td class="p-2 border text-right" id="op3_c13">97.846.228</td>
-                    <td class="p-2 border text-right" id="op3_c14">51.945.400</td>
-                    <td class="p-2 border text-right" id="op3_c15">141.331.000</td>
-                    <td class="p-2 border text-right bg-amber-500 font-black" id="saldoKumulatifOp">357.987</td>
+                    <td class="p-2 border text-right" id="op3_c1">0</td>
+                    <td class="p-2 border text-right" id="op3_c2">0</td>
+                    <td class="p-2 border text-right" id="op3_c3">0</td>
+                    <td class="p-2 border text-right" id="op3_c4">0</td>
+                    <td class="p-2 border text-right" id="op3_c5">0</td>
+                    <td class="p-2 border text-right" id="op3_c6">0</td>
+                    <td class="p-2 border text-right" id="op3_c7">0</td>
+                    <td class="p-2 border text-right" id="op3_c8">0</td>
+                    <td class="p-2 border text-right" id="op3_c9">0</td>
+                    <td class="p-2 border text-right" id="op3_c10">0</td>
+                    <td class="p-2 border text-right" id="op3_c11">0</td>
+                    <td class="p-2 border text-right" id="op3_c12">0</td>
+                    <td class="p-2 border text-right" id="op3_c13">0</td>
+                    <td class="p-2 border text-right" id="op3_c14">0</td>
+                    <td class="p-2 border text-right" id="op3_c15">0</td>
+                    <td class="p-2 border text-right bg-amber-500 font-black" id="saldoKumulatifOp">0</td>
                     <td class="no-print"></td>
                   </tr>
                 </tfoot>
@@ -896,10 +682,10 @@
             </div>
 
             <div class="pt-8 space-y-6 text-xs font-bold text-slate-800">
-              <div class="text-right">Tanete Riattang Barat, 31 Juli 2026</div>
+              <div class="text-right">Tanete Riattang Barat, 2026</div>
               <div class="grid grid-cols-3 gap-4 text-center">
                 <div class="space-y-16"><p>Disupervisi oleh :</p><p class="underline font-bold">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</p><p class="font-normal">BPP</p></div>
-                <div class="space-y-16"><p>Disetujui oleh :</p><p class="font-bold">( H.Jadjdji Irfan )</p><p class="uppercase">KEPALA UPK</p></div>
+                <div class="space-y-16"><p>Disetujui oleh :</p><p class="font-bold">( H.Jadjdji Irfan )</p><p class="uppercase">Kepala Upk</p></div>
                 <div class="space-y-16"><p>Dibuat Oleh :</p><p class="font-bold">Harman, S.M</p><p class="uppercase">Kabag Keuangan UPK</p></div>
               </div>
             </div>
@@ -951,32 +737,38 @@
                     <td class="p-2.5 border text-center">31-Des-25</td>
                     <td class="p-2.5 border">Saldo tutup buku</td>
                     <td class="p-2.5 border text-center">-</td>
-                    <td class="p-2.5 border text-right">24.981.874.242</td>
-                    <td class="p-2.5 border text-right">3.819.286.000</td>
-                    <td class="p-2.5 border text-right">56.568.718</td>
-                    <td class="p-2.5 border text-right">23.330.362.742</td>
-                    <td class="p-2.5 border text-right">23.319.928.402</td>
-                    <td class="p-2.5 border text-right">25.591.210.000</td>
-                    <td class="p-2.5 border text-right">3.255.854.300</td>
-                    <td class="p-2.5 border text-right">125.000</td>
-                    <td class="p-2.5 border text-right font-bold bg-yellow-100">5.099.000</td>
-                    <td class="p-2.5 border text-center no-print">-</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right font-bold bg-yellow-100">0</td>
+                    <td class="p-2.5 border text-center no-print">
+                      <button onclick="editSppRow(this)" class="text-blue-600 font-bold mr-1">Edit</button>
+                      <button onclick="deleteRow(this)" class="text-rose-600 font-bold">Hapus</button>
+                    </td>
                   </tr>
                   <tr class="bg-slate-100 font-bold">
                     <td class="p-2.5 border text-center">-</td>
                     <td class="p-2.5 border text-center">31-Jul-26</td>
                     <td class="p-2.5 border">Saldo Transaksi s/d bln Lalu</td>
                     <td class="p-2.5 border text-center">-</td>
-                    <td class="p-2.5 border text-right">382.130.500</td>
-                    <td class="p-2.5 border text-right">83.316.500</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
                     <td class="p-2.5 border text-right">-</td>
-                    <td class="p-2.5 border text-right">53.000.000</td>
-                    <td class="p-2.5 border text-right">2.600.000</td>
-                    <td class="p-2.5 border text-right">394.600.000</td>
-                    <td class="p-2.5 border text-right">96.050.000</td>
-                    <td class="p-2.5 border text-right">5.099.000</td>
-                    <td class="p-2.5 border text-right font-bold bg-yellow-100">25.197.000</td>
-                    <td class="p-2.5 border text-center no-print">-</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right font-bold bg-yellow-100">0</td>
+                    <td class="p-2.5 border text-center no-print">
+                      <button onclick="editSppRow(this)" class="text-blue-600 font-bold mr-1">Edit</button>
+                      <button onclick="deleteRow(this)" class="text-rose-600 font-bold">Hapus</button>
+                    </td>
                   </tr>
                 </tbody>
                 <tfoot>
@@ -990,7 +782,7 @@
                     <td class="p-2.5 border text-right" id="sumPinj1">0</td>
                     <td class="p-2.5 border text-right" id="sumKas1">0</td>
                     <td class="p-2.5 border text-right" id="sumLainPeng1">0</td>
-                    <td class="p-2.5 border text-right font-bold" id="saldoBulanIni">25.397.000</td>
+                    <td class="p-2.5 border text-right font-bold" id="saldoBulanIni">0</td>
                     <td class="no-print"></td>
                   </tr>
                   <tr class="bg-slate-100 font-bold text-[10px]">
@@ -1003,7 +795,7 @@
                     <td class="p-2.5 border text-right" id="sumPinj2">0</td>
                     <td class="p-2.5 border text-right" id="sumKas2">0</td>
                     <td class="p-2.5 border text-right" id="sumLainPeng2">0</td>
-                    <td class="p-2.5 border text-right font-bold" id="saldoTahunBerjalan">25.397.000</td>
+                    <td class="p-2.5 border text-right font-bold" id="saldoTahunBerjalan">0</td>
                     <td class="no-print"></td>
                   </tr>
                   <tr class="bg-amber-400 text-slate-950 font-black text-[10px]">
@@ -1016,7 +808,7 @@
                     <td class="p-3 border text-right" id="sumPinj3">0</td>
                     <td class="p-3 border text-right" id="sumKas3">0</td>
                     <td class="p-3 border text-right" id="sumLainPeng3">0</td>
-                    <td class="p-3 border text-right bg-amber-500 font-black" id="saldoKumulatif">25.397.000</td>
+                    <td class="p-3 border text-right bg-amber-500 font-black" id="saldoKumulatif">0</td>
                     <td class="no-print"></td>
                   </tr>
                 </tfoot>
@@ -1024,7 +816,7 @@
             </div>
 
             <div class="pt-8 space-y-6 text-xs font-bold text-slate-800">
-              <div class="text-right">Tanete Riattang Barat, 31 Juli 2026</div>
+              <div class="text-right">Tanete Riattang Barat, 2026</div>
               <div class="grid grid-cols-3 gap-4 text-center">
                 <div class="space-y-16"><p>Disupervisi oleh :</p><p class="underline font-bold">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</p><p class="font-normal">BPP</p></div>
                 <div class="space-y-16"><p>Disetujui oleh :</p><p class="font-bold">( H.Jadjdji Irfan )</p><p class="uppercase">Kepala Upk</p></div>
@@ -1075,26 +867,32 @@
                     <td class="p-2.5 border text-center">31-Des-25</td>
                     <td class="p-2.5 border">Saldo tutup buku</td>
                     <td class="p-2.5 border text-center">-</td>
-                    <td class="p-2.5 border text-right">23.319.928.402</td>
-                    <td class="p-2.5 border text-right">17.873.523</td>
-                    <td class="p-2.5 border text-right">23.330.362.742</td>
-                    <td class="p-2.5 border text-right">3.570.999</td>
-                    <td class="p-2.5 border text-right">1.245.827</td>
-                    <td class="p-2.5 border text-right font-bold bg-yellow-100">2.622.357</td>
-                    <td class="p-2.5 border text-center no-print">-</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right font-bold bg-yellow-100">0</td>
+                    <td class="p-2.5 border text-center no-print">
+                      <button onclick="editBankRow(this)" class="text-blue-600 font-bold mr-1">Edit</button>
+                      <button onclick="deleteRow(this)" class="text-rose-600 font-bold">Hapus</button>
+                    </td>
                   </tr>
                   <tr class="bg-slate-100 font-bold">
                     <td class="p-2.5 border text-center">-</td>
                     <td class="p-2.5 border text-center">30-Jun-26</td>
                     <td class="p-2.5 border">Saldo awal / transaksi s/d bln lalu</td>
                     <td class="p-2.5 border text-center">-</td>
-                    <td class="p-2.5 border text-right">52.600.000</td>
+                    <td class="p-2.5 border text-right">0</td>
                     <td class="p-2.5 border text-right">-</td>
-                    <td class="p-2.5 border text-right">53.000.000</td>
+                    <td class="p-2.5 border text-right">0</td>
                     <td class="p-2.5 border text-right">-</td>
-                    <td class="p-2.5 border text-right">90.000</td>
-                    <td class="p-2.5 border text-right font-bold bg-yellow-100">2.132.357</td>
-                    <td class="p-2.5 border text-center no-print">-</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right font-bold bg-yellow-100">0</td>
+                    <td class="p-2.5 border text-center no-print">
+                      <button onclick="editBankRow(this)" class="text-blue-600 font-bold mr-1">Edit</button>
+                      <button onclick="deleteRow(this)" class="text-rose-600 font-bold">Hapus</button>
+                    </td>
                   </tr>
                 </tbody>
                 <tfoot>
@@ -1105,27 +903,27 @@
                     <td class="p-2.5 border text-right" id="bankSumTarik1">-</td>
                     <td class="p-2.5 border text-right" id="bankSumPajak1">-</td>
                     <td class="p-2.5 border text-right" id="bankSumAdm1">-</td>
-                    <td class="p-2.5 border text-right font-bold" id="bankSaldoBulanIni">2.132.357</td>
+                    <td class="p-2.5 border text-right font-bold" id="bankSaldoBulanIni">0</td>
                     <td class="no-print"></td>
                   </tr>
                   <tr class="bg-slate-100 font-bold text-[10px]">
                     <td colspan="4" class="p-2.5 border text-right uppercase">Total Transaksi s/d bulan ini Tahun berjalan</td>
-                    <td class="p-2.5 border text-right" id="bankSumSetor2">52.600.000</td>
+                    <td class="p-2.5 border text-right" id="bankSumSetor2">0</td>
                     <td class="p-2.5 border text-right">-</td>
-                    <td class="p-2.5 border text-right">53.000.000</td>
+                    <td class="p-2.5 border text-right">0</td>
                     <td class="p-2.5 border text-right">-</td>
-                    <td class="p-2.5 border text-right">90.000</td>
-                    <td class="p-2.5 border text-right font-bold" id="bankSaldoTahunBerjalan">2.132.357</td>
+                    <td class="p-2.5 border text-right">0</td>
+                    <td class="p-2.5 border text-right font-bold" id="bankSaldoTahunBerjalan">0</td>
                     <td class="no-print"></td>
                   </tr>
                   <tr class="bg-amber-400 text-slate-950 font-black text-[10px]">
                     <td colspan="4" class="p-3 border text-right uppercase">Total Transaksi Komulatif</td>
-                    <td class="p-3 border text-right" id="bankSumSetor3">23.372.528.402</td>
-                    <td class="p-3 border text-right" id="bankSumBunga3">17.873.523</td>
-                    <td class="p-3 border text-right" id="bankSumTarik3">23.383.362.742</td>
-                    <td class="p-3 border text-right" id="bankSumPajak3">3.570.999</td>
-                    <td class="p-3 border text-right" id="bankSumAdm3">1.335.827</td>
-                    <td class="p-3 border text-right bg-amber-500 font-black" id="bankSaldoKumulatif">2.132.357</td>
+                    <td class="p-3 border text-right" id="bankSumSetor3">0</td>
+                    <td class="p-3 border text-right" id="bankSumBunga3">0</td>
+                    <td class="p-3 border text-right" id="bankSumTarik3">0</td>
+                    <td class="p-3 border text-right" id="bankSumPajak3">0</td>
+                    <td class="p-3 border text-right" id="bankSumAdm3">0</td>
+                    <td class="p-3 border text-right bg-amber-500 font-black" id="bankSaldoKumulatif">0</td>
                     <td class="no-print"></td>
                   </tr>
                 </tfoot>
@@ -1133,7 +931,7 @@
             </div>
 
             <div class="pt-8 space-y-6 text-xs font-bold text-slate-800">
-              <div class="text-right">Tanete Riattang Barat, 31 Juli 2026</div>
+              <div class="text-right">Tanete Riattang Barat, 2026</div>
               <div class="grid grid-cols-3 gap-4 text-center">
                 <div class="space-y-16"><p>Disupervisi oleh :</p><p class="underline font-bold">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</p><p class="font-normal">BPP</p></div>
                 <div class="space-y-16"><p>Disetujui oleh :</p><p class="font-bold">( H.Jadjdji Irfan )</p><p class="uppercase">Kepala Upk</p></div>
@@ -1159,16 +957,7 @@
                     <th class="p-3 border text-center">Kolektibilitas</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td class="p-3 border text-center">1</td>
-                    <td class="p-3 border font-bold">Kelompok Mawar</td>
-                    <td class="p-3 border text-center">Macanang</td>
-                    <td class="p-3 border text-right">772.028.500</td>
-                    <td class="p-3 border text-right">772.028.500</td>
-                    <td class="p-3 border text-center"><span class="bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full">Lancar</span></td>
-                  </tr>
-                </tbody>
+                <tbody></tbody>
               </table>
             </div>
           </div>
@@ -1176,7 +965,7 @@
 
         <!-- ==================== 10. PINJAMAN PERORANGAN ==================== -->
         <div id="panel-pinjamanper" class="tab-panel hidden space-y-4">
-          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-4">
             <h3 class="font-black text-sm text-slate-900 uppercase border-b pb-3">Laporan Perkembangan Pinjaman Perorangan</h3>
             <div class="overflow-x-auto">
               <table class="w-full text-xs text-left border-collapse">
@@ -1190,16 +979,7 @@
                     <th class="p-3 border text-center">Status</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td class="p-3 border text-center">1</td>
-                    <td class="p-3 border font-bold">Ibu Hj. Rosma</td>
-                    <td class="p-3 border">Dagang Kelontong</td>
-                    <td class="p-3 border text-right">813.216.500</td>
-                    <td class="p-3 border text-right">813.216.500</td>
-                    <td class="p-3 border text-center"><span class="bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full">Aktif</span></td>
-                  </tr>
-                </tbody>
+                <tbody></tbody>
               </table>
             </div>
           </div>
@@ -1207,20 +987,20 @@
 
         <!-- ==================== 11. KOLEKTIBILITAS ==================== -->
         <div id="panel-kolek" class="tab-panel hidden space-y-4">
-          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-4">
             <h3 class="font-black text-sm text-slate-900 uppercase border-b pb-3">Laporan Kolektibilitas Pinjaman (Kolek 1 - 5)</h3>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
               <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl">
                 <p class="font-bold text-emerald-800">Lancar (Kolek 1)</p>
-                <p class="text-xl font-black text-emerald-900 mt-1">Rp 1.400.000.000</p>
+                <p class="text-xl font-black text-emerald-900 mt-1">Rp 0</p>
               </div>
               <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl">
                 <p class="font-bold text-amber-800">Kurang Lancar (Kolek 2-3)</p>
-                <p class="text-xl font-black text-amber-900 mt-1">Rp 115.245.000</p>
+                <p class="text-xl font-black text-amber-900 mt-1">Rp 0</p>
               </div>
               <div class="bg-rose-50 border border-rose-200 p-4 rounded-2xl">
                 <p class="font-bold text-rose-800">Macet (Kolek 4-5)</p>
-                <p class="text-xl font-black text-rose-900 mt-1">Rp 70.000.000</p>
+                <p class="text-xl font-black text-rose-900 mt-1">Rp 0</p>
               </div>
             </div>
           </div>
@@ -1232,7 +1012,7 @@
 
   <!-- Modal Kas SPP -->
   <div id="sppModal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 space-y-4 border border-slate-100">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 space-y-4 border border-slate-100 max-h-[90vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b pb-2">
         <h3 class="font-black text-sm text-slate-900 uppercase" id="sppModalTitle">Input Transaksi Kas SPP</h3>
         <button onclick="closeSppModal()" class="text-slate-400 hover:text-slate-700 font-bold text-lg">&times;</button>
@@ -1241,7 +1021,7 @@
         <input type="hidden" id="sppEditIndex" value="">
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Tanggal Transaksi</label>
+            <label class="block font-bold text-slate-700 mb-1">Tanggal</label>
             <input type="date" id="sppTanggal" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold">
           </div>
           <div>
@@ -1251,15 +1031,15 @@
         </div>
         <div>
           <label class="block font-bold text-slate-700 mb-1">Keterangan / Uraian</label>
-          <input type="text" id="sppUraian" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl" placeholder="Contoh: Terima dari Juheria...">
+          <input type="text" id="sppUraian" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl" placeholder="Keterangan transaksi...">
         </div>
         <div>
           <label class="block font-bold text-slate-700 mb-1">Kategori Transaksi</label>
           <select id="sppKategori" onchange="toggleSppFields()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold">
             <option value="setoran">Setoran dari Desa (Pokok & Jasa)</option>
             <option value="laindesa">Setoran Lain-2 Desa</option>
-            <option value="tarikrek">Tarik dari Rek SPP (Pemasukan Bank -> Kas)</option>
-            <option value="setorrek">Setor ke Rek SPP (Pengeluaran Kas -> Bank)</option>
+            <option value="tarikrek">Tarik dari Rek SPP</option>
+            <option value="setorrek">Setor ke Rek SPP</option>
             <option value="perguliran">Pinj SPP / Perguliran</option>
             <option value="kasopr">Kas Opr UPK</option>
             <option value="lainpeng">Pengeluaran Lain-2</option>
@@ -1268,11 +1048,11 @@
         <div id="fieldSetoran" class="grid grid-cols-2 gap-3 bg-blue-50 p-3 rounded-2xl border border-blue-200">
           <div>
             <label class="block font-bold text-blue-900 mb-1">Setoran Pokok (Rp)</label>
-            <input type="number" id="sppPokok" class="w-full p-2 bg-white border border-blue-200 rounded-xl" placeholder="0">
+            <input type="number" id="sppPokok" class="w-full p-2 bg-white border rounded-xl" placeholder="0">
           </div>
           <div>
             <label class="block font-bold text-blue-900 mb-1">Setoran Jasa (Rp)</label>
-            <input type="number" id="sppJasa" class="w-full p-2 bg-white border border-blue-200 rounded-xl" placeholder="0">
+            <input type="number" id="sppJasa" class="w-full p-2 bg-white border rounded-xl" placeholder="0">
           </div>
         </div>
         <div id="fieldLainnya" class="hidden">
@@ -1289,12 +1069,13 @@
 
   <!-- Modal Bank SPP -->
   <div id="bankSppModal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 space-y-4 border border-slate-100">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 space-y-4 border border-slate-100 max-h-[90vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b pb-2">
-        <h3 class="font-black text-sm text-slate-900 uppercase">Input Transaksi Buku Bank SPP</h3>
+        <h3 class="font-black text-sm text-slate-900 uppercase" id="bankModalTitle">Input / Edit Transaksi Bank SPP</h3>
         <button onclick="closeBankSppModal()" class="text-slate-400 hover:text-slate-700 font-bold text-lg">&times;</button>
       </div>
       <div class="space-y-3 text-xs">
+        <input type="hidden" id="bankEditIndex" value="">
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-bold text-slate-700 mb-1">Tanggal</label>
@@ -1306,20 +1087,30 @@
           </div>
         </div>
         <div>
-          <label class="block font-bold text-slate-700 mb-1">Keterangan</label>
-          <input type="text" id="bankUraian" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl" placeholder="Contoh: Bunga Bank / Biaya Adm">
+          <label class="block font-bold text-slate-700 mb-1">Keterangan / Uraian</label>
+          <input type="text" id="bankUraian" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl" placeholder="Keterangan transaksi...">
         </div>
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">Kategori Transaksi Bank</label>
-          <select id="bankKategori" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold">
-            <option value="bungabank">Bunga Bank (Pemasukan)</option>
-            <option value="pajak">Pajak (Pengeluaran)</option>
-            <option value="adm">Adm Bank (Pengeluaran)</option>
-          </select>
-        </div>
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">Nominal (Rp)</label>
-          <input type="number" id="bankNominal" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl" placeholder="0">
+        <div class="grid grid-cols-2 gap-3 bg-slate-50 p-3 rounded-2xl border border-slate-200">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Setoran (Rp)</label>
+            <input type="number" id="bankSetor" class="w-full p-2 bg-white border rounded-xl" placeholder="0">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Bunga Bank (Rp)</label>
+            <input type="number" id="bankBunga" class="w-full p-2 bg-white border rounded-xl" placeholder="0">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Penarikan (Rp)</label>
+            <input type="number" id="bankTarik" class="w-full p-2 bg-white border rounded-xl" placeholder="0">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Pajak (Rp)</label>
+            <input type="number" id="bankPajak" class="w-full p-2 bg-white border rounded-xl" placeholder="0">
+          </div>
+          <div class="col-span-2">
+            <label class="block font-bold text-slate-700 mb-1">Adm (Rp)</label>
+            <input type="number" id="bankAdm" class="w-full p-2 bg-white border rounded-xl" placeholder="0">
+          </div>
         </div>
         <div class="flex justify-end gap-2 pt-2 border-t">
           <button onclick="closeBankSppModal()" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-bold">Batal</button>
@@ -1436,6 +1227,18 @@
       }
     }
 
+    function showSidebar() {
+      const sidebar = document.getElementById('sidebarNav');
+      const toggleBtn = document.getElementById('sidebarToggleBtn');
+      if(isSidebarHidden) {
+        sidebar.style.width = '18rem';
+        sidebar.style.padding = '';
+        sidebar.style.overflow = '';
+        toggleBtn.classList.add('hidden');
+        isSidebarHidden = false;
+      }
+    }
+
     function autoHideSidebar() {
       const sidebar = document.getElementById('sidebarNav');
       const toggleBtn = document.getElementById('sidebarToggleBtn');
@@ -1479,9 +1282,16 @@
         return;
       }
       if(tableKey === 'bankspp') {
+        document.getElementById('bankEditIndex').value = '';
+        document.getElementById('bankModalTitle').textContent = "Input Transaksi Bank SPP";
         document.getElementById('bankTanggal').value = new Date().toISOString().split('T')[0];
+        document.getElementById('bankKwt').value = '-';
         document.getElementById('bankUraian').value = '';
-        document.getElementById('bankNominal').value = '';
+        document.getElementById('bankSetor').value = '';
+        document.getElementById('bankBunga').value = '';
+        document.getElementById('bankTarik').value = '';
+        document.getElementById('bankPajak').value = '';
+        document.getElementById('bankAdm').value = '';
         document.getElementById('bankSppModal').classList.remove('hidden');
         document.getElementById('bankSppModal').classList.add('flex');
         return;
@@ -1520,9 +1330,11 @@
       // 1. KAS SPP
       const tbodySpp = document.getElementById('tbody-kasspp');
       let sumP = 0, sumJ = 0, sumLDesa = 0, sumTarik = 0, sumSetor = 0, sumPinj = 0, sumKasOprSpp = 0, sumLainPeng = 0;
-      let runningSaldoSpp = 25197000;
+      let baseTutP = 0, baseTutJ = 0, baseTutLD = 0, baseTutT = 0, baseTutSet = 0, baseTutPinj = 0, baseTutKas = 0, baseTutLP = 0;
+      let baseLaluP = 0, baseLaluJ = 0, baseLaluLD = 0, baseLaluT = 0, baseLaluSet = 0, baseLaluPinj = 0, baseLaluKas = 0, baseLaluLP = 0;
+      let runningSaldoSpp = 0;
 
-      for(let i = 2; i < tbodySpp.rows.length; i++) {
+      for(let i = 0; i < tbodySpp.rows.length; i++) {
         const row = tbodySpp.rows[i];
         const p = parseInt(row.cells[4].innerText.replace(/\./g, '')) || 0;
         const j = parseInt(row.cells[5].innerText.replace(/\./g, '')) || 0;
@@ -1533,67 +1345,75 @@
         const kasOpr = parseInt(row.cells[10].innerText.replace(/\./g, '')) || 0;
         const lPeng = parseInt(row.cells[11].innerText.replace(/\./g, '')) || 0;
 
-        sumP += p; sumJ += j; sumLDesa += lDesa; sumTarik += tarik;
-        sumSetor += setor; sumPinj += pinj; sumKasOprSpp += kasOpr; sumLainPeng += lPeng;
+        if (i === 0) {
+          baseTutP = p; baseTutJ = j; baseTutLD = lDesa; baseTutT = tarik; baseTutSet = setor; baseTutPinj = pinj; baseTutKas = kasOpr; baseTutLP = lPeng;
+        } else if (i === 1) {
+          baseLaluP = p; baseLaluJ = j; baseLaluLD = lDesa; baseLaluT = tarik; baseLaluSet = setor; baseLaluPinj = pinj; baseLaluKas = kasOpr; baseLaluLP = lPeng;
+        } else {
+          sumP += p; sumJ += j; sumLDesa += lDesa; sumTarik += tarik;
+          sumSetor += setor; sumPinj += pinj; sumKasOprSpp += kasOpr; sumLainPeng += lPeng;
+        }
 
         runningSaldoSpp = runningSaldoSpp + p + j + lDesa + tarik - setor - pinj - kasOpr - lPeng;
         row.cells[12].innerText = runningSaldoSpp.toLocaleString('id-ID');
       }
 
-      document.getElementById('sumPokok1').innerText = sumP > 0 ? sumP.toLocaleString('id-ID') : '-';
-      document.getElementById('sumJasa1').innerText = sumJ > 0 ? sumJ.toLocaleString('id-ID') : '-';
-      document.getElementById('sumLDesa1').innerText = sumLDesa > 0 ? sumLDesa.toLocaleString('id-ID') : '-';
-      document.getElementById('sumTarik1').innerText = sumTarik > 0 ? sumTarik.toLocaleString('id-ID') : '-';
-      document.getElementById('sumSetor1').innerText = sumSetor > 0 ? sumSetor.toLocaleString('id-ID') : '-';
-      document.getElementById('sumPinj1').innerText = sumPinj > 0 ? sumPinj.toLocaleString('id-ID') : '-';
-      document.getElementById('sumKas1').innerText = sumKasOprSpp > 0 ? sumKasOprSpp.toLocaleString('id-ID') : '-';
-      document.getElementById('sumLainPeng1').innerText = sumLainPeng > 0 ? sumLainPeng.toLocaleString('id-ID') : '-';
+      document.getElementById('sumPokok1').innerText = sumP > 0 ? sumP.toLocaleString('id-ID') : '0';
+      document.getElementById('sumJasa1').innerText = sumJ > 0 ? sumJ.toLocaleString('id-ID') : '0';
+      document.getElementById('sumLDesa1').innerText = sumLDesa > 0 ? sumLDesa.toLocaleString('id-ID') : '0';
+      document.getElementById('sumTarik1').innerText = sumTarik > 0 ? sumTarik.toLocaleString('id-ID') : '0';
+      document.getElementById('sumSetor1').innerText = sumSetor > 0 ? sumSetor.toLocaleString('id-ID') : '0';
+      document.getElementById('sumPinj1').innerText = sumPinj > 0 ? sumPinj.toLocaleString('id-ID') : '0';
+      document.getElementById('sumKas1').innerText = sumKasOprSpp > 0 ? sumKasOprSpp.toLocaleString('id-ID') : '0';
+      document.getElementById('sumLainPeng1').innerText = sumLainPeng > 0 ? sumLainPeng.toLocaleString('id-ID') : '0';
       document.getElementById('saldoBulanIni').innerText = runningSaldoSpp.toLocaleString('id-ID');
 
-      const totP2 = 382130500 + sumP;
-      const totJ2 = 83316500 + sumJ;
-      const totLD2 = 0 + sumLDesa;
-      const totTarik2 = 53000000 + sumTarik;
-      const totSetor2 = 2600000 + sumSetor;
-      const totPinj2 = 394600000 + sumPinj;
-      const totKas2 = 96050000 + sumKasOprSpp;
-      const totLain2 = 5099000 + sumLainPeng;
+      const totP2 = baseLaluP + sumP;
+      const totJ2 = baseLaluJ + sumJ;
+      const totLD2 = baseLaluLD + sumLDesa;
+      const totT2 = baseLaluT + sumTarik;
+      const totSet2 = baseLaluSet + sumSetor;
+      const totPinj2 = baseLaluPinj + sumPinj;
+      const totKas2 = baseLaluKas + sumKasOprSpp;
+      const totLP2 = baseLaluLP + sumLainPeng;
 
       document.getElementById('sumPokok2').innerText = totP2.toLocaleString('id-ID');
       document.getElementById('sumJasa2').innerText = totJ2.toLocaleString('id-ID');
-      document.getElementById('sumLainDesa2').innerText = totLD2 > 0 ? totLD2.toLocaleString('id-ID') : '-';
-      document.getElementById('sumTarik2').innerText = totTarik2.toLocaleString('id-ID');
-      document.getElementById('sumSetor2').innerText = totSetor2.toLocaleString('id-ID');
+      document.getElementById('sumLainDesa2').innerText = totLD2.toLocaleString('id-ID');
+      document.getElementById('sumTarik2').innerText = totT2.toLocaleString('id-ID');
+      document.getElementById('sumSetor2').innerText = totSet2.toLocaleString('id-ID');
       document.getElementById('sumPinj2').innerText = totPinj2.toLocaleString('id-ID');
       document.getElementById('sumKas2').innerText = totKas2.toLocaleString('id-ID');
-      document.getElementById('sumLainPeng2').innerText = totLain2.toLocaleString('id-ID');
+      document.getElementById('sumLainPeng2').innerText = totLP2.toLocaleString('id-ID');
       document.getElementById('saldoTahunBerjalan').innerText = runningSaldoSpp.toLocaleString('id-ID');
 
-      document.getElementById('sumPokok3').innerText = (24981874242 + totP2).toLocaleString('id-ID');
-      document.getElementById('sumJasa3').innerText = (3819286000 + totJ2).toLocaleString('id-ID');
-      document.getElementById('sumLainDesa3').innerText = (56568718 + totLD2).toLocaleString('id-ID');
-      document.getElementById('sumTarik3').innerText = (23330362742 + totTarik2).toLocaleString('id-ID');
-      document.getElementById('sumSetor3').innerText = (23319928402 + totSetor2).toLocaleString('id-ID');
-      document.getElementById('sumPinj3').innerText = (25591210000 + totPinj2).toLocaleString('id-ID');
-      document.getElementById('sumKas3').innerText = (3255854300 + totKas2).toLocaleString('id-ID');
-      document.getElementById('sumLainPeng3').innerText = (125000 + totLain2).toLocaleString('id-ID');
+      document.getElementById('sumPokok3').innerText = (baseTutP + totP2).toLocaleString('id-ID');
+      document.getElementById('sumJasa3').innerText = (baseTutJ + totJ2).toLocaleString('id-ID');
+      document.getElementById('sumLainDesa3').innerText = (baseTutLD + totLD2).toLocaleString('id-ID');
+      document.getElementById('sumTarik3').innerText = (baseTutT + totT2).toLocaleString('id-ID');
+      document.getElementById('sumSetor3').innerText = (baseTutSet + totSet2).toLocaleString('id-ID');
+      document.getElementById('sumPinj3').innerText = (baseTutPinj + totPinj2).toLocaleString('id-ID');
+      document.getElementById('sumKas3').innerText = (baseTutKas + totKas2).toLocaleString('id-ID');
+      document.getElementById('sumLainPeng3').innerText = (baseTutLP + totLP2).toLocaleString('id-ID');
       document.getElementById('saldoKumulatif').innerText = runningSaldoSpp.toLocaleString('id-ID');
 
 
-      // 2. BANK SPP (SINKRONISASI OTOMATIS DARI KAS SPP)
+      // 2. BANK SPP (SINKRONISASI DARI KAS SPP)
       const tbodyBank = document.getElementById('tbody-bankspp');
       while (tbodyBank.rows.length > 2) {
         tbodyBank.deleteRow(2);
       }
 
-      let bankSumSetor = 0;
-      let bankSumTarik = 0;
-      let bankSumBunga = 0;
-      let bankSumPajak = 0;
-      let bankSumAdm = 0;
-      let runningSaldoBank = 2132357;
+      let bankSumSetor = 0, bankSumTarik = 0, bankSumBunga = 0, bankSumPajak = 0, bankSumAdm = 0;
+      let runningSaldoBank = 0;
 
-      let bankRowIdx = 0;
+      for(let i = 0; i < tbodyBank.rows.length; i++) {
+        const rowB = tbodyBank.rows[i];
+        const setB = parseInt(rowB.cells[4].innerText.replace(/\./g, '')) || 0;
+        const tarikB = parseInt(rowB.cells[6].innerText.replace(/\./g, '')) || 0;
+        runningSaldoBank = runningSaldoBank + setB - tarikB;
+      }
+
       for(let i = 2; i < tbodySpp.rows.length; i++) {
         const rowSpp = tbodySpp.rows[i];
         const tgl = rowSpp.cells[1].innerText;
@@ -1603,13 +1423,12 @@
         const setor = parseInt(rowSpp.cells[8].innerText.replace(/\./g, '')) || 0;
 
         if (tarik > 0 || setor > 0) {
-          bankRowIdx++;
           bankSumTarik += tarik;
           bankSumSetor += setor;
 
           const trBank = document.createElement('tr');
           trBank.innerHTML = `
-            <td class="p-2.5 border text-center">${bankRowIdx}</td>
+            <td class="p-2.5 border text-center">${tbodyBank.rows.length + 1}</td>
             <td class="p-2.5 border text-center">${tgl}</td>
             <td class="p-2.5 border font-bold">${ket} (Linked Kas SPP)</td>
             <td class="p-2.5 border text-center">${kwt}</td>
@@ -1648,21 +1467,12 @@
       document.getElementById('bankSumAdm1').innerText = bankSumAdm > 0 ? bankSumAdm.toLocaleString('id-ID') : '-';
       document.getElementById('bankSaldoBulanIni').innerText = runningSaldoBank.toLocaleString('id-ID');
 
-      const bankTotSetor2 = 52600000 + bankSumSetor;
-      const bankTotTarik2 = 53000000 + bankSumTarik;
-      const bankTotPajak2 = 0 + bankSumPajak;
-      const bankTotAdm2 = 90000 + bankSumAdm;
-      document.getElementById('bankSumSetor2').innerText = bankTotSetor2.toLocaleString('id-ID');
-      document.getElementById('bankSumTarik2').innerText = bankTotTarik2.toLocaleString('id-ID');
-      document.getElementById('bankSumPajak2').innerText = bankTotPajak2 > 0 ? bankTotPajak2.toLocaleString('id-ID') : '-';
-      document.getElementById('bankSumAdm2').innerText = bankTotAdm2.toLocaleString('id-ID');
+      document.getElementById('bankSumSetor2').innerText = bankSumSetor.toLocaleString('id-ID');
+      document.getElementById('bankSumTarik2').innerText = bankSumTarik.toLocaleString('id-ID');
       document.getElementById('bankSaldoTahunBerjalan').innerText = runningSaldoBank.toLocaleString('id-ID');
 
-      document.getElementById('bankSumSetor3').innerText = (23319928402 + bankTotSetor2).toLocaleString('id-ID');
-      document.getElementById('bankSumBunga3').innerText = (17873523 + bankSumBunga).toLocaleString('id-ID');
-      document.getElementById('bankSumTarik3').innerText = (23330362742 + bankTotTarik2).toLocaleString('id-ID');
-      document.getElementById('bankSumPajak3').innerText = (3570999 + bankTotPajak2).toLocaleString('id-ID');
-      document.getElementById('bankSumAdm3').innerText = (1245827 + bankTotAdm2).toLocaleString('id-ID');
+      document.getElementById('bankSumSetor3').innerText = bankSumSetor.toLocaleString('id-ID');
+      document.getElementById('bankSumTarik3').innerText = bankSumTarik.toLocaleString('id-ID');
       document.getElementById('bankSaldoKumulatif').innerText = runningSaldoBank.toLocaleString('id-ID');
 
       document.getElementById('rekonBankSppBuku').innerText = runningSaldoBank.toLocaleString('id-ID');
@@ -1674,7 +1484,7 @@
       // 3. KAS OPERASIONAL
       const tbodyOpr = document.getElementById('tbody-kasop');
       let sumsOpr = Array(15).fill(0);
-      let runningSaldoOpr = 1613477;
+      let runningSaldoOpr = 0;
 
       for(let i = 2; i < tbodyOpr.rows.length; i++) {
         const row = tbodyOpr.rows[i];
@@ -1693,54 +1503,35 @@
       }
 
       for(let c = 0; c < 15; c++) {
-        const cell = document.getElementById(`op1_c${c+1}`);
-        if(cell) cell.innerText = sumsOpr[c] > 0 ? sumsOpr[c].toLocaleString('id-ID') : '-';
+        const cell1 = document.getElementById(`op1_c${c+1}`);
+        const cell2 = document.getElementById(`op2_c${c+1}`);
+        const cell3 = document.getElementById(`op3_c${c+1}`);
+        if(cell1) cell1.innerText = sumsOpr[c] > 0 ? sumsOpr[c].toLocaleString('id-ID') : '-';
+        if(cell2) cell2.innerText = sumsOpr[c] > 0 ? sumsOpr[c].toLocaleString('id-ID') : '-';
+        if(cell3) cell3.innerText = sumsOpr[c] > 0 ? sumsOpr[c].toLocaleString('id-ID') : '-';
       }
       document.getElementById('saldoBulanIniOp').innerText = runningSaldoOpr.toLocaleString('id-ID');
-
-      const baseValsOpr = [0, 0, 0, 96050000, 0, 500000, 0, 69500000, 3283052, 0, 0, 1600000, 12967228, 60000, 8806000];
-      for(let c = 0; c < 15; c++) {
-        const totalVal = baseValsOpr[c] + sumsOpr[c];
-        const cell = document.getElementById(`op2_c${c+1}`);
-        if(cell) cell.innerText = totalVal > 0 ? totalVal.toLocaleString('id-ID') : '-';
-      }
       document.getElementById('saldoTahunBerjalanOp').innerText = runningSaldoOpr.toLocaleString('id-ID');
-
-      const kumulatifBaseOpr = [26272471, 0, 0, 999796800, 124235, 500000, 25932374, 638016000, 35513517, 600000, 0, 35151000, 97846228, 51945400, 141331000];
-      for(let c = 0; c < 15; c++) {
-        const totalKum = kumulatifBaseOpr[c] + sumsOpr[c];
-        const cell = document.getElementById(`op3_c${c+1}`);
-        if(cell) cell.innerText = totalKum > 0 ? totalKum.toLocaleString('id-ID') : '-';
-      }
       document.getElementById('saldoKumulatifOp').innerText = runningSaldoOpr.toLocaleString('id-ID');
 
       document.getElementById('neracaKasOpr').innerText = runningSaldoOpr.toLocaleString('id-ID');
       document.getElementById('neracaKasSpp').innerText = runningSaldoSpp.toLocaleString('id-ID');
-      const totalKasAktif = runningSaldoOpr + runningSaldoSpp + 357987;
+      const totalKasAktif = runningSaldoOpr + runningSaldoSpp;
       document.getElementById('neracaTotalKas').innerText = totalKasAktif.toLocaleString('id-ID');
 
 
-      // 4. RUGI LABA & NERACA INTEGRATION
+      // 4. RUGI LABA & NERACA
       const totalPendapatanOpsLain = 0 + sumsOpr[3];
       document.getElementById('rlJasaSppLink').innerText = totalPendapatanOpsLain.toLocaleString('id-ID');
-      const totalPendapatanAll = 85171500 + totalPendapatanOpsLain + 500000 + bankSumBunga + 17873523;
+      const totalPendapatanAll = totalPendapatanOpsLain + bankSumBunga;
       document.getElementById('rlTotalPendapatan').innerText = totalPendapatanAll.toLocaleString('id-ID');
 
-      const totalHonor = 69500000 + sumsOpr[7];
-      const totalAdm = 3283052 + sumsOpr[8];
-      const totalTransport = 0 + sumsOpr[9];
-      const totalBiayaLainOps = 12967228 + sumsOpr[12];
-      const totalBiayaOpsAll = totalHonor + totalAdm + totalTransport + totalBiayaLainOps;
+      const totalHonor = 0 + sumsOpr[7];
+      const totalAdm = 0 + sumsOpr[8];
       document.getElementById('rlHonor').innerText = totalHonor.toLocaleString('id-ID');
       document.getElementById('rlAdm').innerText = totalAdm.toLocaleString('id-ID');
-      document.getElementById('rlTotalBiayaOps').innerText = totalBiayaOpsAll.toLocaleString('id-ID');
 
-      const totalBiayaNonOps = 160000 + sumsOpr[13] + sumsOpr[14] + bankSumPajak + bankSumAdm;
-      document.getElementById('rlPajakBank').innerText = (3570999 + bankSumPajak).toLocaleString('id-ID');
-      document.getElementById('rlAdmBank').innerText = (1335827 + bankSumAdm).toLocaleString('id-ID');
-      document.getElementById('rlTotalNonOps').innerText = totalBiayaNonOps.toLocaleString('id-ID');
-
-      const totalBiayaAll = totalBiayaOpsAll + totalBiayaNonOps;
+      const totalBiayaAll = totalHonor + totalAdm + bankSumPajak + bankSumAdm;
       document.getElementById('rlTotalBiaya').innerText = totalBiayaAll.toLocaleString('id-ID');
 
       const labaRugiBersih = totalPendapatanAll - totalBiayaAll;
@@ -1748,7 +1539,7 @@
       document.getElementById('dashLabaRugi').innerText = (labaRugiBersih < 0 ? '-Rp ' : 'Rp ') + Math.abs(labaRugiBersih).toLocaleString('id-ID');
       document.getElementById('neracaSurplusBerjalan').innerText = labaRugiBersih.toLocaleString('id-ID');
 
-      const totalAktivaFinal = totalKasAktif + runningSaldoBank + 1585245000 + 392175806 + 93000000;
+      const totalAktivaFinal = totalKasAktif + runningSaldoBank;
       document.getElementById('neracaTotalAktiva').innerText = totalAktivaFinal.toLocaleString('id-ID');
       document.getElementById('neracaTotalPasiva').innerText = totalAktivaFinal.toLocaleString('id-ID');
       document.getElementById('dashTotalKasBank').innerText = 'Rp ' + (totalKasAktif + runningSaldoBank).toLocaleString('id-ID');
@@ -1798,7 +1589,7 @@
       } else {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="p-2.5 border text-center">${tbody.rows.length - 1}</td>
+          <td class="p-2.5 border text-center">${tbody.rows.length + 1}</td>
           <td class="p-2.5 border text-center">${formattedTgl}</td>
           <td class="p-2.5 border font-bold">${uraian}</td>
           <td class="p-2.5 border text-center">${kwt}</td>
@@ -1835,6 +1626,7 @@
       const uraian = document.getElementById('bankUraian').value;
       const kat = document.getElementById('bankKategori').value;
       const nominal = parseInt(document.getElementById('bankNominal').value) || 0;
+      const editIdx = document.getElementById('bankEditIndex').value;
 
       if(!uraian || !nominal) { alert('Uraian dan Nominal wajib diisi!'); return; }
 
@@ -1844,21 +1636,36 @@
       if(kat === 'adm') bAdm = nominal.toLocaleString('id-ID');
 
       const tbody = document.getElementById('tbody-bankspp');
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td class="p-2.5 border text-center">${tbody.rows.length + 1}</td>
-        <td class="p-2.5 border text-center">${formattedTgl}</td>
-        <td class="p-2.5 border font-bold">${uraian}</td>
-        <td class="p-2.5 border text-center">${kwt}</td>
-        <td class="p-2.5 border text-right">${bSet}</td>
-        <td class="p-2.5 border text-right">${bBunga}</td>
-        <td class="p-2.5 border text-right">${bTarik}</td>
-        <td class="p-2.5 border text-right">${bPajak}</td>
-        <td class="p-2.5 border text-right">${bAdm}</td>
-        <td class="p-2.5 border text-right font-bold bg-yellow-50">0</td>
-        <td class="p-2.5 border text-center no-print"><button onclick="deleteRow(this)" class="text-rose-600 font-bold">Hapus</button></td>
-      `;
-      tbody.appendChild(tr);
+      if(editIdx !== '') {
+        const row = tbody.rows[editIdx];
+        row.cells[1].innerText = formattedTgl;
+        row.cells[2].innerText = uraian;
+        row.cells[3].innerText = kwt;
+        if(bSet !== '-') row.cells[4].innerText = bSet;
+        if(bBunga !== '-') row.cells[5].innerText = bBunga;
+        if(bTarik !== '-') row.cells[6].innerText = bTarik;
+        if(bPajak !== '-') row.cells[7].innerText = bPajak;
+        if(bAdm !== '-') row.cells[8].innerText = bAdm;
+      } else {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="p-2.5 border text-center">${tbody.rows.length + 1}</td>
+          <td class="p-2.5 border text-center">${formattedTgl}</td>
+          <td class="p-2.5 border font-bold">${uraian}</td>
+          <td class="p-2.5 border text-center">${kwt}</td>
+          <td class="p-2.5 border text-right">${bSet}</td>
+          <td class="p-2.5 border text-right">${bBunga}</td>
+          <td class="p-2.5 border text-right">${bTarik}</td>
+          <td class="p-2.5 border text-right">${bPajak}</td>
+          <td class="p-2.5 border text-right">${bAdm}</td>
+          <td class="p-2.5 border text-right font-bold bg-yellow-50">0</td>
+          <td class="p-2.5 border text-center no-print">
+            <button onclick="editBankRow(this)" class="text-blue-600 font-bold mr-1">Edit</button>
+            <button onclick="deleteRow(this)" class="text-rose-600 font-bold">Hapus</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      }
       closeBankSppModal(); // TUTUP MODAL INSTAN TANPA JEDA
       calculateFinancials();
     }
@@ -1931,7 +1738,7 @@
     function editSppRow(btn) {
       const row = btn.closest('tr');
       document.getElementById('sppEditIndex').value = row.rowIndex;
-      document.getElementById('sppModalTitle').textContent = "Edit Transaksi Kas SPP";
+      document.getElementById('sppModalTitle').textContent = "Edit Baris / Transaksi Kas SPP";
       const cols = row.querySelectorAll('td');
       document.getElementById('sppTanggal').value = new Date().toISOString().split('T')[0];
       document.getElementById('sppKwt').value = cols[3].innerText;
@@ -1944,10 +1751,27 @@
       document.getElementById('sppModal').classList.add('flex');
     }
 
+    function editBankRow(btn) {
+      const row = btn.closest('tr');
+      document.getElementById('bankEditIndex').value = row.rowIndex;
+      document.getElementById('bankModalTitle').textContent = "Edit Baris / Transaksi Bank SPP";
+      const cols = row.querySelectorAll('td');
+      document.getElementById('bankTanggal').value = new Date().toISOString().split('T')[0];
+      document.getElementById('bankKwt').value = cols[3].innerText;
+      document.getElementById('bankUraian').value = cols[2].innerText;
+      document.getElementById('bankSetor').value = cols[4].innerText !== '-' ? cols[4].innerText.replace(/\./g, '') : '';
+      document.getElementById('bankBunga').value = cols[5].innerText !== '-' ? cols[5].innerText.replace(/\./g, '') : '';
+      document.getElementById('bankTarik').value = cols[6].innerText !== '-' ? cols[6].innerText.replace(/\./g, '') : '';
+      document.getElementById('bankPajak').value = cols[7].innerText !== '-' ? cols[7].innerText.replace(/\./g, '') : '';
+      document.getElementById('bankAdm').value = cols[8].innerText !== '-' ? cols[8].innerText.replace(/\./g, '') : '';
+      document.getElementById('bankSppModal').classList.remove('hidden');
+      document.getElementById('bankSppModal').classList.add('flex');
+    }
+
     function editKasOprRow(btn) {
       const row = btn.closest('tr');
       document.getElementById('kasOprEditIndex').value = row.rowIndex;
-      document.getElementById('kasOprModalTitle').textContent = "Edit Transaksi Kas Operasional";
+      document.getElementById('kasOprModalTitle').textContent = "Edit Baris / Transaksi Kas Operasional";
       const cols = row.querySelectorAll('td');
       document.getElementById('kasOprTanggal').value = new Date().toISOString().split('T')[0];
       document.getElementById('kasOprKwt').value = cols[3].innerText;
